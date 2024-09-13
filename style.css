@@ -1,1 +1,10 @@
+<style>
+    /* CSS to center video */
+    iframe {
+        display: block;
+        margin: 0 auto;
+        width: 50vw;
+        height: 50vh;
+    }
+</style>
 
