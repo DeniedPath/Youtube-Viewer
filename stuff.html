@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,30 +11,43 @@
         <h1>Try not to Laugh</h1>
     </header>
     <main>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/nI0D7OuLCbU?si=Jz1oBHI2EdDk7LnX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id="video" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
     <details>
         <summary>About the video</summary>
         <p>A try not to laugh video made by a youtuber called CoryXKenshin</p>
     </details>
     <label for="autoplay">Auto-Play</label>
-    <input type="checkbox" id="autoplay" onclick="toggleAutoplay()">
-    <select>
-        <option value="category1">Category 1</option>
-        <option value="category2">Category 2</option>
+<input type="checkbox" id="autoplay" onkeydown="toggleAutoplay()">
+    <select id="category">
+        <option value="category1">Funny Videos</option>
+        <option value="category2">Game Videos</option>
     </select>
     </main>
     <footer>
         <p>Social Media Links</p>
     </footer>
     <script>
-        function toggleAutoplay() {
-            const video = 
-            document.getElementByID('video');
-            if(document.getElementByID('autoplay').checked)
-        {video.src += "&autoplay=1"} else {
-            video.src = video.src.replace("&autoplay=1", "")
+        const videos = {
+            category1: ["PI1ysFREAsk", "YtRUZaLT5uw"],
+            category2: ["6g2vk8Gudqs", "bg8i4CvE74M"]
+        };
+
+        let currentVideoIndex = 0;
+        const videoElement = document.getElementById('video');
+        const categoryElement = document.getElementById('category');
+        const autoplayCheckbox = document.getElementById('autoplay');
+        function playNextVideo() {
+            if (autoplayCHeckbox.checked) {
+                currentVideoIndex = (currentVideoIndex + 1) % videos[categoryElement.value].length;
+                videoElement.src = `https://www.youtube.com/embed/${videos[categoryElement.value][currentVideoIndex]}?autoplay=1`;
             }
         }
-    </script> 
+        categoryElement.addEventListener('change', () => {
+            currentVideoIndex = 0;
+            videoElement.src = `https://www.youtube.com/embed/${videos[categoryElement.value][currentVideoIndex]}`;
+        });
+
+        videoElement.addEventListener('ended', playNextVideo);
+    </script>
 </body>
 </html>
