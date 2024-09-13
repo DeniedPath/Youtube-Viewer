@@ -2,9 +2,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Youtube Focus Viewer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Try not to Laugh</h1>
+    </header>
+    <main>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/nI0D7OuLCbU?si=Jz1oBHI2EdDk7LnX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <details>
+        <summary>About the video</summary>
+        <p>A try not to laugh video made by a youtuber called CoryXKenshin</p>
+    </details>
+    <label for="autoplay">Auto-Play</label>
+    <input type="checkbox" id="autoplay" onclick="toggleAutoplay()">
+    <select>
+        <option value="category1">Category 1</option>
+        <option value="category2">Category 2</option>
+    </select>
+    </main>
+    <footer>
+        <p>Social Media Links</p>
+    </footer>
+    <script>
+        function toggleAutoplay() {
+            const video = 
+            document.getElementByID('video');
+            if(document.getElementByID('autoplay').checked)
+        {video.src += "&autoplay=1"} else {
+            video.src = video.src.replace("&autoplay=1", "")
+            }
+        }
+    </script> 
 </body>
 </html>
