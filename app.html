@@ -3,35 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youtube Focus Viewer</title>
+    <title>Video Player Layout</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Try not to Laugh</h1>
-    </header>
-    <main>
-        <!-- Video iframe for displaying YouTube videos -->
-        <iframe id="video" src="https://www.youtube.com/embed/nFpoZGSEVx0" frameborder="0" allowfullscreen></iframe>
-        
-        <!-- Details section for video description -->
-        <details>
-            <summary>About the video</summary>
-            <!-- Paragraph for displaying the video description -->
-            <p id="video-description">A try not to laugh video made by a youtuber called CoryXKenshin</p>
-        </details>
-
-        <!-- Checkbox for enabling/disabling autoplay -->
-        <label for="autoplay">Auto-Play</label>
-        <input type="checkbox" id="autoplay">
-
-        <!-- Dropdown menu for selecting video categories -->
-        <select id="category">
-            <option value="category1">Funny Videos</option>
-            <option value="category2">Game Videos</option>
-        </select>
-    </main>
-
+    <div class="container">
+        <header>
+            <h1>Try not to Laugh</h1>
+        </header>
+        <main>
+            <div class="main-video">
+                <iframe id="video" src="https://www.youtube.com/embed/nFpoZGSEVx0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h2>Main Video Title</h2>
+            <details>
+                <summary>About the video</summary>
+                <p id="video-description">A try not to laugh video made by a youtuber called CoryXKenshin</p>
+            </details>
+            <div class="controls">
+                <label for="autoplay">Auto-Play</label>
+                <input type="checkbox" id="autoplay">
+                <select id="category">
+                    <option value="category1">Funny Videos</option>
+                    <option value="category2">Game Videos</option>
+                </select>
+            </div>
+        </main>
+        <section class="suggested-videos">
+            <h3>Watch Next</h3>
+            <div class="video-grid">
+                <div class="video-item">
+                    <img src="https://via.placeholder.com/160x90" alt="Video thumbnail">
+                    <p>Suggested Video 1</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://via.placeholder.com/160x90" alt="Video thumbnail">
+                    <p>Suggested Video 2</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://via.placeholder.com/160x90" alt="Video thumbnail">
+                    <p>Suggested Video 3</p>
+                </div>
+                <div class="video-item">
+                    <img src="https://via.placeholder.com/160x90" alt="Video thumbnail">
+                    <p>Suggested Video 4</p>
+                </div>
+            </div>
+        </section>
+    </div>
     <footer>
         <p>Social Media Links</p>
     </footer>
@@ -49,51 +68,38 @@
             }
         };
 
-        // Variable to track the current video index
         let currentVideoIndex = 0;
-
-        // Get references to HTML elements
         const videoElement = document.getElementById('video');
         const categoryElement = document.getElementById('category');
         const autoplayCheckbox = document.getElementById('autoplay');
         const descriptionElement = document.getElementById('video-description');
 
-        // Function to play the next video in the list if autoplay is enabled
         function playNextVideo() {
             if (autoplayCheckbox.checked) {
-                // Increment video index and loop back if necessary
                 currentVideoIndex = (currentVideoIndex + 1) % videos[categoryElement.value].urls.length;
-                // Update the video source with the next video's URL
                 videoElement.src = `https://www.youtube.com/embed/${videos[categoryElement.value].urls[currentVideoIndex]}?autoplay=1`;
             }
         }
 
-        // Function to update the video source and description based on selected category
         function updateVideoAndDescription() {
-            const category = categoryElement.value; // Get selected category
-            currentVideoIndex = 0; // Reset video index
-            // Update the video source with the first video's URL of the selected category
+            const category = categoryElement.value;
+            currentVideoIndex = 0;
             videoElement.src = `https://www.youtube.com/embed/${videos[category].urls[currentVideoIndex]}`;
-            // Update the description text with the selected category's description
             descriptionElement.textContent = videos[category].description;
         }
 
-        // Event listener for category change, updates video and description when a new category is selected
         categoryElement.addEventListener('change', updateVideoAndDescription);
 
-        // Event listener for when the video iframe loads, sends a message to play the video
         videoElement.addEventListener('load', function() {
             this.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         });
 
-        // Interval function to check every 5 seconds if autoplay is enabled and play next video if it is
         setInterval(() => {
             if (autoplayCheckbox.checked) {
                 playNextVideo();
             }
-        }, 5000); // Check every 5 seconds
+        }, 5000);
 
-        // Initialize with the first category's description and first video's URL
         updateVideoAndDescription();
     </script>
 </body>
