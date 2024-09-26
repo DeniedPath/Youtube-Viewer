@@ -6,6 +6,7 @@ body {
     justify-content: center;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: lightblue;
 }
 
 main {
@@ -67,4 +68,24 @@ iframe {
     margin: 0 auto;
     width: 50vw;
     height: 50vh;
+}
+
+/* style four */
+
+.page-header {
+    background-color: lightcyan; /* Background color */
+    padding: 20px;            /* Padding around the title */
+    text-align: center;       /* Center align text */
+    width: 100%;              /* Full width */
+    position: relative;       /* Positioning context */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional shadow for depth */
+}
+
+#page-title {
+    margin: 0;               /* Remove default margin */
+    font-size: 2em;          /* Font size for title */
+    color: #333;             /* Text color */
+}
+.container {
+    margin-top: 20px; /* Adjust this value as needed */
 }
