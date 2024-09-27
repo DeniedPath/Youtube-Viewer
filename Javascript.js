@@ -3,18 +3,23 @@ const videos = {
     category1: {
         urls: [
             {id: "nFpoZGSEVx0", title: "Funny Video 1"},
-            {id: "3L_olCnKckw", title: "Funny Video 2"}
+            {id: "3L_olCnKckw", title: "Funny Video 2"},
+            {id: "EBaz1bmibGY", title: "Funny Video 3"},
+            {id: "3z0U4zSsQGc", title: "Funny Video 4"}
         ],
         description: "A collection of funny videos to make you laugh"
     },
-    category2: {
-        urls: [
-            {id: "6g2vk8Gudqs", title: "Game Video 1"},
-            {id: "bg8i4CvE74M", title: "Game Video 2"}
-        ],
-        description: "Exciting gameplay videos from various popular games"
+        category2: {
+            urls: [
+                {id: "6g2vk8Gudqs", title: "Game Video 1"},
+                {id: "bg8i4CvE74M", title: "Game Video 2"},
+                {id: "T4DFKOlrXCQ", title: "Game Video 3"},
+                {id: "wNfZ8vJi4L8", title: "Game Video 4"}
+            ],
+            description: "Exciting gameplay videos from various popular games"
+        }
+
     }
-};
 
 let currentVideoIndex = 0;
 
