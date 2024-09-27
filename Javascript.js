@@ -72,22 +72,21 @@ function updateSuggestedVideos() {
 
 // Function to update the page title
 function updatePageTitle() {
-    const pageTitleElement = document.getElementById('page-title');
     const category = categoryElement.value;
     if (category === 'category1') {
       pageTitleElement.textContent = 'Try not to Laugh';
     } else if (category === 'category2') {
       pageTitleElement.textContent = 'Game Videos';
     }
-  }
+}
 
 // Function to update both main video and suggested videos
 function updateVideoAndDescription() {
     currentVideoIndex = 0;
     updateMainVideo();
     updateSuggestedVideos();
-    updatePageTitle(); // Add this line
-  }
+    updatePageTitle();
+}
 
 // Event listener for category change
 categoryElement.addEventListener('change', updateVideoAndDescription);
@@ -95,5 +94,68 @@ categoryElement.addEventListener('change', updateVideoAndDescription);
 // Set interval to check for autoplay and change video every 5 seconds
 setInterval(playNextVideo, 5000);
 
-// Initial update of video and description
-updateVideoAndDescription();
+// New code for theme functionality
+
+// Get modal elements
+const modal = document.getElementById("themeModal");
+const btn = document.getElementById("themeBtn");
+const span = document.getElementsByClassName("close")[0];
+const form = document.getElementById("themeForm");
+
+// Open modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Close modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Close modal if clicked outside
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Handle form submission
+form.onsubmit = function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const theme = document.getElementById("theme").value;
+  
+  // Save user preferences to localStorage
+  localStorage.setItem("userName", name);
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userTheme", theme);
+  
+  // Apply the selected theme
+  applyTheme(theme);
+  
+  // Close the modal
+  modal.style.display = "none";
+}
+
+// Function to apply theme
+function applyTheme(theme) {
+  document.body.className = theme + "-theme";
+}
+
+// Load saved theme on page load
+function loadSavedTheme() {
+  const savedTheme = localStorage.getItem("userTheme");
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  }
+}
+
+// Initialize the application
+function initializeApp() {
+  updateVideoAndDescription();
+  loadSavedTheme();
+}
+
+// Call initializeApp when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initializeApp);
