@@ -1,51 +1,91 @@
 <!DOCTYPE html>
+<!-- This line tells web browsers that this is an HTML5 document -->
+
 <html lang="en">
+<!-- This is the root element of the HTML page. 'lang="en"' specifies that the language is English -->
+
 <head>
+    <!-- The head section contains meta information about the document -->
     <meta charset="UTF-8">
+    <!-- This specifies the character encoding for the document (UTF-8 supports many languages) -->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This ensures the page is responsive and displays correctly on all devices -->
+    
     <title>Video Player Layout</title>
+    <!-- This sets the title of the webpage, which appears in the browser tab -->
+    
     <link rel="stylesheet" href="style.css">
+    <!-- This links to an external CSS file named "style.css" which controls the page's appearance -->
 </head>
+
 <body>
+    <!-- The body contains all the visible content of the webpage -->
+
     <header class="page-header">
+        <!-- The header typically contains introductory content or navigation -->
         <h1 id="page-title">Try not to Laugh</h1>
-        <!-- Theme selection button -->
+        <!-- This is the main heading of the page -->
+        
         <button id="themeBtn">Select Theme</button>
+        <!-- This button allows users to change the website's theme -->
     </header>
+
     <div class="container">
+        <!-- This div acts as a container for the main content -->
+
         <main>
-            <!-- Main video container, will be populated by JavaScript -->
+            <!-- The main section contains the primary content of the page -->
             <div class="main-video" id="main-video-container"></div>
+            <!-- This empty div will be filled with the main video content using JavaScript -->
+            
             <h2 id="video-title">Main Video Title</h2>
+            <!-- This displays the title of the currently playing video -->
+            
             <details>
+                <!-- The details element creates an expandable/collapsible section -->
                 <summary>About the video</summary>
+                <!-- This is the visible part of the details element when collapsed -->
                 <p id="video-description">A try not to laugh video made by a youtuber called CoryXKenshin</p>
+                <!-- This paragraph contains the video description -->
             </details>
+            
             <div class="controls">
+                <!-- This div contains various controls for the video player -->
                 <label for="autoplay">Auto-Play</label>
                 <input type="checkbox" id="autoplay">
+                <!-- This creates a checkbox for enabling/disabling autoplay -->
+                
                 <select id="category">
+                    <!-- This dropdown menu allows users to select different video categories -->
                     <option value="category1">Funny Videos</option>
                     <option value="category2">Game Videos</option>
                 </select>
             </div>
         </main>
+
         <section class="suggested-videos">
+            <!-- This section is for displaying suggested videos -->
             <h3>Watch Next</h3>
-            <!-- Suggested videos container, will be populated by JavaScript -->
             <div class="video-grid" id="suggested-videos"></div>
+            <!-- This empty div will be filled with suggested video thumbnails using JavaScript -->
         </section>
     </div>
+
     <footer>
+        <!-- The footer typically contains copyright information, links, etc. -->
         <p>Social Media Links</p>
     </footer>
 
-    <!-- The Modal -->
     <div id="themeModal" class="modal">
+        <!-- This div creates a modal (pop-up) for theme selection -->
         <div class="modal-content">
             <span class="close">&times;</span>
+            <!-- This span creates a close button for the modal -->
+            
             <h2>Select Your Theme</h2>
             <form id="themeForm">
+                <!-- This form allows users to input their preferences -->
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 
@@ -54,17 +94,19 @@
                 
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">
+                    <!-- This dropdown lets users choose a theme -->
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
                     <option value="blue">Blue</option>
                 </select>
                 
                 <button type="submit">Save Preferences</button>
+                <!-- This button submits the form -->
             </form>
         </div>
     </div>
 
-    <!-- Link to the external JavaScript file -->
     <script src="Javascript.js"></script>
+    <!-- This links to an external JavaScript file that adds interactivity to the page -->
 </body>
 </html>
