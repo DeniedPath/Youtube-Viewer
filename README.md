@@ -50,4 +50,7 @@ Uncertainty about the usage and value of a theme customization feature.
 Contributions to improve the YouTube Focus Viewer are welcome. Please submit pull requests or open issues to discuss proposed changes.
 
 ## License
-[Insert chosen license here]
+[None yet]
+
+## Personal notes
+I placed lots of comments in the code because im bad at explaining things so i wrote alot to help me and others understand easier and hopefully those with no coding experience
