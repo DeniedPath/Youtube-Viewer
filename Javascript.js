@@ -22,8 +22,10 @@ const videos = {
 // This is like a catalog of videos. It organizes videos into categories (funny videos and game videos),
 // and stores their YouTube IDs, titles, and descriptions.
 
+
 let currentVideoIndex = 0;
 // This keeps track of which video is currently playing.
+
 
 // These lines find specific elements on the webpage so we can interact with them
 const mainVideoContainer = document.getElementById('main-video-container');
