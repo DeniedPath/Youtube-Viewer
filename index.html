@@ -22,13 +22,21 @@
 <body>
     <!-- The body contains all the visible content of the webpage -->
 
+    <!-- Navigation menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profile" id="profileLink">Profile</a></li>
+        </ul>
+    </nav>
+
     <header class="page-header">
         <!-- The header typically contains introductory content or navigation -->
         <h1 id="page-title">Try not to Laugh</h1>
         <!-- This is the main heading of the page -->
         
-        <button id="themeBtn">Select Theme</button>
-        <!-- This button allows users to change the website's theme -->
+        <button id="createProfileBtn">Create Your Profile</button>
+        <!-- This button allows users to create their profile -->
     </header>
 
     <div class="container">
@@ -77,32 +85,46 @@
         <p>Social Media Links</p>
     </footer>
 
-    <div id="themeModal" class="modal">
-        <!-- This div creates a modal (pop-up) for theme selection -->
+    <!-- Profile creation modal -->
+    <div id="profileModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <!-- This span creates a close button for the modal -->
-            
-            <h2>Select Your Theme</h2>
-            <form id="themeForm">
-                <!-- This form allows users to input their preferences -->
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
+            <h2>Create Your Profile</h2>
+            <form id="profileForm">
+                <label for="username">Username (min 4 characters):</label>
+                <input type="text" id="username" name="username" required minlength="4">
+    
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
-                <label for="theme">Theme:</label>
-                <select id="theme" name="theme">
-                    <!-- This dropdown lets users choose a theme -->
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                    <option value="blue">Blue</option>
-                </select>
-                
-                <button type="submit">Save Preferences</button>
-                <!-- This button submits the form -->
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+    
+                <fieldset>
+                    <legend>Theme Preference:</legend>
+                    <input type="radio" id="light" name="theme" value="light" checked>
+                    <label for="light">Light</label>
+                    <input type="radio" id="dark" name="theme" value="dark">
+                    <label for="dark">Dark</label>
+                    <input type="radio" id="blue" name="theme" value="blue">
+                    <label for="blue">Blue</label>
+                    <input type="radio" id="green" name="theme" value="green">
+                    <label for="green">Green</label>
+                </fieldset>
+    
+                <button type="submit">Create Profile</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Profile display modal -->
+    <div id="profileDisplayModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Profile</h2>
+            <div id="profileInfo">
+                <!-- Profile information will be inserted here -->
+            </div>
         </div>
     </div>
 
